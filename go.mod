@@ -7,7 +7,7 @@ require (
 	github.com/echocat/slf4g v0.21.0
 	github.com/echocat/slf4g/native v0.21.0
 	github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320
-	github.com/hashicorp/go-hclog v0.9.2
+	github.com/hashicorp/go-hclog v1.1.0
 	github.com/hashicorp/go-uuid v1.0.2
 	github.com/hashicorp/hcl/v2 v2.3.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.0.0-rc.2
@@ -22,6 +22,7 @@ require (
 	github.com/alecthomas/units v0.0.0-20211218093645-b94a6e3cc137 // indirect
 	github.com/apparentlymart/go-textseg v1.0.0 // indirect
 	github.com/bhoriuchi/go-crypto v0.0.0-20190614232206-6aed78a5c061 // indirect
+	github.com/fatih/color v1.7.0 // indirect
 	github.com/golang/protobuf v1.3.4 // indirect
 	github.com/google/go-cmp v0.3.1 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
@@ -29,6 +30,8 @@ require (
 	github.com/hashicorp/go-plugin v1.3.0 // indirect
 	github.com/hashicorp/go-version v1.2.0 // indirect
 	github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d // indirect
+	github.com/mattn/go-colorable v0.1.4 // indirect
+	github.com/mattn/go-isatty v0.0.10 // indirect
 	github.com/mitchellh/copystructure v1.0.0 // indirect
 	github.com/mitchellh/go-testing-interface v1.0.4 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.0 // indirect
