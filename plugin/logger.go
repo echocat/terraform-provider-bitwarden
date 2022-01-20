@@ -89,3 +89,26 @@ func (this *Logger) StandardLogger(*hclog.StandardLoggerOptions) *log2.Logger {
 func (this *Logger) StandardWriter(*hclog.StandardLoggerOptions) io.Writer {
 	panic("not implemented")
 }
+
+func (this *Logger) Log(level hclog.Level, msg string, args ...interface{}) {
+	switch level {
+	case hclog.Trace:
+		this.Trace(msg, args...)
+	case hclog.Debug:
+		this.Debug(msg, args...)
+	case hclog.Info:
+		this.Info(msg, args...)
+	case hclog.Warn:
+		this.Warn(msg, args...)
+	case hclog.Error:
+		this.Error(msg, args...)
+	}
+}
+
+func (this *Logger) ImpliedArgs() []interface{} {
+	return nil
+}
+
+func (this *Logger) Name() string {
+	return this.Logger.GetName()
+}
