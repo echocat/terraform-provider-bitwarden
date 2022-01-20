@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	log "github.com/echocat/slf4g"
 	"github.com/echocat/terraform-provider-bitwarden/bitwarden"
+	"github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
 	"gopkg.in/alecthomas/kingpin.v2"
 	"os"
@@ -126,9 +127,13 @@ func (this *Plugin) Serve() {
 }
 
 func (this *Plugin) toOpts() *plugin.ServeOpts {
+	logger := &Logger{log.GetRootLogger()}
+	hclog.SetDefault(logger)
+	_ = os.Setenv("TF_LOG_SDK_PROTO", "error")
+	_ = os.Setenv("TF_LOG_SDK", "error")
 	return &plugin.ServeOpts{
 		ProviderFunc:        this.provider,
-		Logger:              &Logger{log.GetRootLogger()},
+		Logger:              logger,
 		NoLogOutputOverride: true,
 	}
 }
