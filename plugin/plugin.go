@@ -127,7 +127,8 @@ func (this *Plugin) Serve() {
 
 func (this *Plugin) toOpts() *plugin.ServeOpts {
 	return &plugin.ServeOpts{
-		ProviderFunc: this.provider,
-		Logger:       &Logger{log.GetRootLogger()},
+		ProviderFunc:        this.provider,
+		Logger:              &Logger{log.GetRootLogger()},
+		NoLogOutputOverride: true,
 	}
 }
