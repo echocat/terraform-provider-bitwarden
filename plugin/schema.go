@@ -139,4 +139,20 @@ var (
 			return
 		},
 	}
+	idSchema = schema.Schema{
+		Type:     schema.TypeString,
+		Optional: true,
+		ValidateDiagFunc: func(v interface{}, path cty.Path) (diags diag.Diagnostics) {
+			if vStr, ok := v.(string); ok && vStr != "" {
+				if _, err := uuid.ParseUUID(vStr); err != nil {
+					diags = append(diags, diag.Diagnostic{
+						Severity: diag.Error,
+						Summary:  "Illegal bitwarden id.",
+						Detail:   fmt.Sprintf("Illegal bitwarden id: %v", vStr),
+					})
+				}
+			}
+			return
+		},
+	}
 )

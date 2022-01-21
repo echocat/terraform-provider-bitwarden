@@ -19,18 +19,14 @@ func dataSourceItem() *schema.Resource {
 			"folder_id":       &folderIdSchema,
 			"name": {
 				Type:     schema.TypeString,
-				Required: true,
+				Optional: true,
 			},
 			"attachments_query": {
 				Type:     schema.TypeList,
 				Optional: true,
 				Elem:     &attachmentQuerySchema,
 			},
-			"id": {
-				Type:     schema.TypeString,
-				Optional: true,
-				Computed: true,
-			},
+			"id": &idSchema,
 			"type": {
 				Type:     schema.TypeInt,
 				Computed: true,
@@ -75,7 +71,6 @@ func dataSourceItem() *schema.Resource {
 func dataSourceItemRead(_ context.Context, d *schema.ResourceData, plainB interface{}) (diags diag.Diagnostics) {
 	b := plainB.(*bitwarden.Bitwarden)
 	q := bitwarden.ItemQuery{
-		Name: d.Get("name").(string),
 		OnTooBroadQuery: func() {
 			diags = append(diags, diag.Diagnostic{
 				Severity: diag.Warning,
@@ -85,6 +80,18 @@ func dataSourceItemRead(_ context.Context, d *schema.ResourceData, plainB interf
 		},
 	}
 
+	var id string
+	if v, ok := d.Get("id").(string); ok && v != "" {
+		id = v
+	} else if v, ok := d.Get("name").(string); ok && v != "" {
+		q.Name = v
+	} else {
+		return diag.Diagnostics{{
+			Severity: diag.Error,
+			Summary:  "Neither id nor name defined.",
+			Detail:   "There was neither the attribute id nor name defined.",
+		}}
+	}
 	if v, ok := d.Get("organization_id").(string); ok {
 		q.OrganizationId = v
 	}
@@ -95,12 +102,17 @@ func dataSourceItemRead(_ context.Context, d *schema.ResourceData, plainB interf
 		q.FolderId = v
 	}
 
-	var attachmentQueries bitwarden.ItemAttachmentQueries
-	if err := attachmentQueries.Parse(d.Get("attachments_query")); err != nil {
+	if err := q.Attachments.Parse(d.Get("attachments_query")); err != nil {
 		return diag.FromErr(err)
 	}
 
-	item, err := b.FindItem(q)
+	var item *bitwarden.Item
+	var err error
+	if id != "" {
+		item, err = b.GetItem(id, q.Attachments)
+	} else {
+		item, err = b.FindItem(q)
+	}
 	if err == bitwarden.ErrNoSuchItem {
 		return diag.Diagnostics{diag.Diagnostic{
 			Severity: diag.Error,
@@ -118,6 +130,7 @@ func dataSourceItemRead(_ context.Context, d *schema.ResourceData, plainB interf
 	if err != nil {
 		return diag.FromErr(err)
 	}
+
 	for k, v := range item.ToResponse() {
 		if err := d.Set(k, v); err != nil {
 			return diag.FromErr(err)

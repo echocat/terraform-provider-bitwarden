@@ -138,6 +138,7 @@ func (this *Bitwarden) readMasterPassword(username string) (string, error) {
 		fmt.Printf("Bitwarden Master password (%s): ", username)
 	}
 	prompt()
+	fmt.Print("**hidden** ")
 	result, err := terminal.ReadPassword(int(os.Stdin.Fd()))
 	if err == nil {
 		fmt.Println()
@@ -272,10 +273,14 @@ func (this *Bitwarden) FindItem(q ItemQuery) (*Item, error) {
 	return match, nil
 }
 
-func (this *Bitwarden) GetItem(id string) (*Item, error) {
+func (this *Bitwarden) GetItem(id string, aq ItemAttachmentQueries) (*Item, error) {
 	var item Item
 	err := this.ExecuteAndUnmarshal(nil, &item, "get", "item", id)
 	if err != nil {
+		return nil, err
+	}
+
+	if err := item.ResolveAttachments(aq, this); err != nil {
 		return nil, err
 	}
 

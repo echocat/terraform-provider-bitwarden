@@ -69,7 +69,6 @@ func dataSourceItemsRead(_ context.Context, d *schema.ResourceData, plainB inter
 			Summary:  "Cannot execute bitwarden command.",
 			Detail:   fmt.Sprintf("Cannot execute bitwarden command: %v", err),
 		}}
-
 	}
 
 	result := items.ToResponse()

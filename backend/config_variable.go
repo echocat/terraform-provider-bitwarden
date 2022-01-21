@@ -91,7 +91,7 @@ func (this ConfigVariable) resolve(using *bitwarden.Bitwarden, refs ConfigVariab
 
 	var item *bitwarden.Item
 	if this.ItemId != "" {
-		if item, err = using.GetItem(this.ItemId); err != nil {
+		if item, err = using.GetItem(this.ItemId, nil); err != nil {
 			return "", fmt.Errorf("%s: %w", this.Label, err)
 		}
 	} else {

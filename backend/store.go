@@ -40,7 +40,7 @@ func (this *Store) getItem(b *bitwarden.Bitwarden, plainRef string) (*bitwarden.
 	}
 
 	if ref.ItemId != "" {
-		return b.GetItem(ref.ItemId)
+		return b.GetItem(ref.ItemId, nil)
 	}
 	if ref.ItemName != "" {
 		return b.FindItem(bitwarden.ItemQuery{
