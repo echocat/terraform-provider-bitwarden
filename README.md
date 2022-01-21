@@ -1,2 +1,2 @@
-# Bitwarden provider/wrapper for Terraform
+# Bitwarden provider/backend for Terraform
 

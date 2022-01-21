@@ -241,7 +241,7 @@ func (this *Store) DeleteLock(plainRef string) error {
 	return nil
 }
 
-const storeAttachmentFileTimePattern = "2006-01-02T15-04-05.999999"
+const storeAttachmentFileTimePattern = "2006-01-02T15-04-05.000000"
 const lockAttachmentFileName = "terraform.lock.json"
 
 var stateAttachmentFileRegex = regexp.MustCompile(`^terraform-state-(\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}\.\d{6})\.json$`)
@@ -250,6 +250,7 @@ func (this *Store) latestAttachmentReferenceOf(item *bitwarden.Item) (result *ti
 	if item != nil {
 		var refs timedAttachmentReferences
 		refs.extractIfPossibleFrom(&item.AttachmentReferences)
+		sort.Sort(refs)
 		if len(refs) > 0 {
 			result = &refs[0]
 		}

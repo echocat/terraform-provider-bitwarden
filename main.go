@@ -1,9 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	log "github.com/echocat/slf4g"
+	"github.com/echocat/slf4g/level"
 	"github.com/echocat/slf4g/native"
 	"github.com/echocat/slf4g/native/facade/value"
+	sdk "github.com/echocat/slf4g/sdk/bridge"
 	"github.com/echocat/terraform-provider-bitwarden/backend"
 	"github.com/echocat/terraform-provider-bitwarden/plugin"
 	"gopkg.in/alecthomas/kingpin.v2"
@@ -20,12 +24,7 @@ func main() {
 	app := kingpin.New(os.Args[0], "Provides a Bitwarden based backend for terraform.")
 
 	var chdir, oldDir string
-
-	lv := value.NewProvider(native.DefaultProvider)
-	app.Flag("log.level", "Level how messages should be logged.").
-		Default(lv.Level.String()).
-		Envar("TF_BACKEND_LOG_LEVEL").
-		SetValue(lv.Level)
+	configureLog(app)
 	app.Flag("chdir", "Directory to move into while executing the actions.").
 		Envar("TF_CHROOT").
 		StringVar(&chdir)
@@ -66,4 +65,39 @@ func main() {
 
 	os.Exit(b.ExitCode)
 
+}
+
+func configureLog(app *kingpin.Application) {
+	sdk.Configure(func(v *log.LoggingWriter) {
+		v.Interceptor = interceptSdkLog
+	})
+
+	lv := value.NewProvider(native.DefaultProvider)
+	app.Flag("log.level", "Level how messages should be logged.").
+		Default(lv.Level.String()).
+		Envar("TF_BACKEND_LOG_LEVEL").
+		SetValue(lv.Level)
+}
+
+var (
+	warnPrefix1  = []byte("[WARN] ")
+	warnPrefix2  = []byte("WARN: ")
+	errorPrefix1 = []byte("[ERROR] ")
+	errorPrefix2 = []byte("ERROR: ")
+)
+
+func interceptSdkLog(b []byte, lvl level.Level) ([]byte, level.Level, error) {
+	if bytes.HasPrefix(b, warnPrefix1) {
+		return b[len(warnPrefix1):], level.Warn, nil
+	}
+	if bytes.HasPrefix(b, warnPrefix2) {
+		return b[len(warnPrefix2):], level.Warn, nil
+	}
+	if bytes.HasPrefix(b, errorPrefix1) {
+		return b[len(errorPrefix1):], level.Error, nil
+	}
+	if bytes.HasPrefix(b, errorPrefix2) {
+		return b[len(errorPrefix2):], level.Error, nil
+	}
+	return b, lvl, nil
 }
