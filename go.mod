@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/bhoriuchi/terraform-backend-http v0.0.0-20190615070304-ad22a976cbe3
-	github.com/echocat/slf4g v0.22.0
+	github.com/echocat/slf4g v0.24.0
 	github.com/echocat/slf4g/native v0.22.0
 	github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320
 	github.com/hashicorp/go-hclog v1.2.0
