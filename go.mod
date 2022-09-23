@@ -9,7 +9,7 @@ require (
 	github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320
 	github.com/hashicorp/go-hclog v1.3.0
 	github.com/hashicorp/go-uuid v1.0.3
-	github.com/hashicorp/hcl/v2 v2.14.0
+	github.com/hashicorp/hcl/v2 v2.14.1
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.14.0
 	github.com/zclconf/go-cty v1.10.0
 	golang.org/x/crypto v0.0.0-20220517005047-85d78b3ac167
