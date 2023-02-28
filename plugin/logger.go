@@ -82,6 +82,10 @@ func (this *Logger) SetLevel(hclog.Level) {
 	panic("not implemented")
 }
 
+func (this *Logger) GetLevel() hclog.Level {
+	panic("not implemented")
+}
+
 func (this *Logger) StandardLogger(*hclog.StandardLoggerOptions) *log2.Logger {
 	return sdk.NewWrapper(this.Logger, level.Info)
 }

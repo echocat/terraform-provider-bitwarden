@@ -117,13 +117,7 @@ func (this *Plugin) isDebug() bool {
 }
 
 func (this *Plugin) Serve() {
-	if this.isDebug() {
-		if err := plugin.Debug(context.Background(), this.ProviderAddr, this.toOpts()); err != nil {
-			panic(err)
-		}
-	} else {
-		plugin.Serve(this.toOpts())
-	}
+	plugin.Serve(this.toOpts())
 }
 
 func (this *Plugin) toOpts() *plugin.ServeOpts {
@@ -131,9 +125,12 @@ func (this *Plugin) toOpts() *plugin.ServeOpts {
 	hclog.SetDefault(logger)
 	_ = os.Setenv("TF_LOG_SDK_PROTO", "error")
 	_ = os.Setenv("TF_LOG_SDK", "error")
-	return &plugin.ServeOpts{
+	result := &plugin.ServeOpts{
 		ProviderFunc:        this.provider,
 		Logger:              logger,
 		NoLogOutputOverride: true,
+		Debug:               this.isDebug(),
+		ProviderAddr:        this.ProviderAddr,
 	}
+	return result
 }
