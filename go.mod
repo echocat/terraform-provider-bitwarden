@@ -7,7 +7,7 @@ require (
 	github.com/echocat/slf4g v1.5.2
 	github.com/echocat/slf4g/native v1.5.2
 	github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320
-	github.com/hashicorp/go-hclog v1.5.0
+	github.com/hashicorp/go-hclog v1.6.0
 	github.com/hashicorp/go-uuid v1.0.3
 	github.com/hashicorp/hcl/v2 v2.19.1
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.30.0
