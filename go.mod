@@ -12,7 +12,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.19.1
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.31.0
 	github.com/zclconf/go-cty v1.14.1
-	golang.org/x/crypto v0.16.0
+	golang.org/x/crypto v0.17.0
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )
 
