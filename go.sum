@@ -17,8 +17,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/echocat/slf4g v1.5.3 h1:DdQGyHwdv3+hxRWJh+ZAikUDMVt4TWQg//kcsYJ1SLk=
 github.com/echocat/slf4g v1.5.3/go.mod h1:YvF/d1TcPvT+/xiHStLHPI4xPT1GGeEmPczn2MSljNA=
-github.com/echocat/slf4g/native v1.5.2 h1:DFXpybP8d3GcflOngj0H7NymJ+McJanNlQRxWL9yEfA=
-github.com/echocat/slf4g/native v1.5.2/go.mod h1:vCZn/wnp0xfdXlm5W1DwJI2SaLBc6NKaAqtNqe1y0VY=
+github.com/echocat/slf4g/native v1.5.3 h1:eR14gqITxjoQ3Q5BYTInAKrDR9O7H1YgOn9tEki48F8=
+github.com/echocat/slf4g/native v1.5.3/go.mod h1:8hMNlQaGVhqjB97Ykh0dqsxcgYFBSGQkWkv2uC3JI5c=
 github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYFFOfk=
 github.com/fatih/color v1.16.0 h1:zmkK9Ngbjj+K0yRhTVONQh1p/HknKYSlNT+vZCzyokM=
 github.com/fatih/color v1.16.0/go.mod h1:fL2Sau1YI5c0pdGEVCbKQbLXB6edEj1ZgiY4NijnWvE=
