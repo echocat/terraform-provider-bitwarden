@@ -11,7 +11,7 @@ require (
 	github.com/hashicorp/go-uuid v1.0.3
 	github.com/hashicorp/hcl/v2 v2.20.1
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
-	github.com/zclconf/go-cty v1.14.4
+	github.com/zclconf/go-cty v1.15.1
 	golang.org/x/crypto v0.31.0
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )
