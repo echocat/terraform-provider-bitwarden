@@ -1,8 +1,6 @@
 module github.com/echocat/terraform-provider-bitwarden
 
-go 1.23.0
-
-toolchain go1.24.1
+go 1.24.0
 
 require (
 	github.com/bhoriuchi/terraform-backend-http v0.0.0-20190615070304-ad22a976cbe3
