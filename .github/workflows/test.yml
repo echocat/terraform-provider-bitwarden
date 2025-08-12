@@ -21,7 +21,7 @@ jobs:
         id: go
 
       - name: Check out
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Get dependencies
         run: |
@@ -57,7 +57,7 @@ jobs:
           terraform_wrapper: false
 
       - name: Check out
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Get dependencies
         run: |
