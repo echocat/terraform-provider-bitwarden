@@ -16,8 +16,8 @@ github.com/bufbuild/protocompile v0.4.0/go.mod h1:3v93+mbWn/v3xzN+31nwkJfrEpAUwp
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/echocat/slf4g v1.6.3 h1:tkDzxbC+r2xRuZdjrrs6Nqgwt58NxB+Ha0x/oxMfUC4=
-github.com/echocat/slf4g v1.6.3/go.mod h1:YvF/d1TcPvT+/xiHStLHPI4xPT1GGeEmPczn2MSljNA=
+github.com/echocat/slf4g v1.7.0 h1:3xYnotPi7VejsFJI0kj4u0lfVsHWj5JsIheahhABqNM=
+github.com/echocat/slf4g v1.7.0/go.mod h1:YvF/d1TcPvT+/xiHStLHPI4xPT1GGeEmPczn2MSljNA=
 github.com/echocat/slf4g/native v1.6.3 h1:qrtaxuiTN7UtzW/NZRAYh8FUkpbrG9CKv5EBoVSk4dI=
 github.com/echocat/slf4g/native v1.6.3/go.mod h1:nttm/tfuBoiBR05xqp+e/5a2hJYQsRXuLDg9LqOoZbs=
 github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYFFOfk=
