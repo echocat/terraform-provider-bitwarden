@@ -1,6 +1,6 @@
 module github.com/echocat/terraform-provider-bitwarden
 
-go 1.24.0
+go 1.25
 
 require (
 	github.com/bhoriuchi/terraform-backend-http v0.0.0-20190615070304-ad22a976cbe3
@@ -11,7 +11,7 @@ require (
 	github.com/hashicorp/go-uuid v1.0.3
 	github.com/hashicorp/hcl/v2 v2.24.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.38.1
-	github.com/zclconf/go-cty v1.17.0
+	github.com/zclconf/go-cty v1.18.0
 	golang.org/x/crypto v0.46.0
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )
